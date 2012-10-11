@@ -1,0 +1,10 @@
+
+{% extends "base.html" %}	
+		
+{% block content %}
+
+ {{loginform.errors}} 
+ <tr align="left"><td>{{ loginform.as_table }}</td></tr>{% endblock %}
+
+{% block submit%} 
+<tr align="center"><td> <input type="submit" title="Login" /></td></tr>{% endblock %}

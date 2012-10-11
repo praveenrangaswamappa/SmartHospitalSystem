@@ -1,0 +1,35 @@
+<html>
+	<title>Billing Form</title>
+	<h1>Billing Form</h1>	
+	<body>
+	<form action="" method="post"> {% csrf_token %}
+	{% if  form.errors %}
+		<p > Correct the following fields </p>
+		<p color:"red">	{{ form.patientname.errors }} </p>
+		<p> name : {{ form.patientname}} </P>
+		<p>{{ form.dateofbirth.errors }} </p>
+		<p>DOB  :{{ form.dateofbirth }} </p>
+		<p color:"red">	{{ form.age.errors }} </p>
+		<p> age : {{ form.age}} </P>	
+		<p> sex 	: {{ form.sex}} </P>
+		<p>	{{ form.email.errors }} </p>
+		<p> email :{{ form.email}} </P>
+		<p>	{{ form.phonenumber.errors }} </p>
+		<p> phonenumber :{{ form.phonenumber}} </P>
+	<input type="submit" title="submit" />
+	{% else %}
+		<p> name :	{{ form.patientname}} </P>
+		<p>	DOB : {{ form.dateofbirth }} </p>
+		<p>	age : {{ form.age }} </p>
+		<p> sex   : {{ form.sex}} </P>
+		<p> email : {{ form.email}} </P>
+		<p> phonenumber :{{ form.phonenumber}} </P>
+		<input type="submit" title="submit" />
+	{% endif %}
+		
+
+
+	
+ 	</form>
+	</body>
+</html>

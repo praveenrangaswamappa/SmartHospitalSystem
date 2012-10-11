@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<title>Smart Hospital System</title>
+<link rel="stylesheet" type="text/css" href="/static/style.css" />
+ <script src="/static/date.js"></script>
+
+
+<script type="text/javascript">
+
+	$(function() {
+		$('#id_reg_date').datepicker(
+									 { 
+	                    
+	                   changeMonth: true, 
+	                   changeYear: true,}
+   );
+	});
+	
+		$(function() {
+		$('#id_dateofbirth').datepicker(
+									 { 
+	                    
+	                   changeMonth: true, 
+	                   changeYear: true,}
+   );
+	});
+	
+</script>
+<style type="text/css">
+div.ui-datepicker{
+	 background-color:#FF8080;
+	 font-size:14px;
+	 color:#FFF;
+}
+
+</style>
+</head>
+<body>
+
+<div id="main_container">
+	<div class="top_bar">
+    	<!--<div class="top_search">
+        	<div class="search_text"><a href="#">Advanced Search</a></div>
+            <input type="text" class="search_input" name="search" />
+            <input type="image" src="images/search.gif" class="search_bt"/>
+        </div>
+        -->
+		<div align="right" style="padding-right:28px">
+       {% if user.is_active and user.is_staff %}
+Welcome {{ user.username }}		
+	<br><a href="/logout/">logout</a><br />
+{% else %}
+		<a href="/login/">login</a>
+
+		{% endif %} 
+    </div>
+    </div>
+	<div id="header">
+        
+        <div id="logo">
+            <h1> Smart Hospital System</h1>
+	    </div>
+        
+         <!-- end of oferte_content-->
+        
+
+    </div>
+    
+   <div id="main_content"> 
+   
+            <div id="menu_tab">
+                    <ul class="menu">
+                         <li><a href="index.html" class="nav"> HOME </a></li>
+                         <li class="divider"></li>
+                         <li><a href="#" class="nav">ABOUT US</a></li>
+                         <li class="divider"></li>
+                         <li><a href="#" class="nav">SERVICES</a></li>
+                         <li class="divider"></li>
+                         <li><a href="#" class="nav">ENQUERY</a></li>
+                         <li class="divider"></li>
+                         <li><a href="#" class="nav">CONTACT</a></li>
+                        
+
+                    </ul>
+
+            </div><!-- end of menu tab -->
+            
+   <!--  <div class="crumb_navigation">
+   Navigation: <span class="current">Home</span>
+    
+    </div>  -->      
+    
+    
+   <div class="left_content">
+   
+   <div class="wel" align="center"></div>
+    <div class="title_box">OPD Deparment</div>
+    
+        <ul class="left_menu">
+        <li class="odd"><a href="/patientregistration/">Patient registration</a></li>
+        <li class="even"><a href="/patient/">Patients in Hospital</a></li>
+         <li class="odd"><a href="/invoice/">Invoice</a></li>
+        <li class="even"><a href="/prescription/">Prescription </a></li>
+         <li class="odd"><a href="/prescriptiongiven/">Prescription given</a></li>
+         <li class="even"><a href="/pharmacy/">Pharmacy</a></li>
+     
+        </ul> 
+      
+        
+    
+   </div><!-- end of left content -->
+   
+   
+   <div class="center_content">
+   <form action="" method="post"> {% csrf_token %}
+   	
+    <table  align="left" width="100%"><tr><td>
+	{% block content %} {% endblock %}
+		{% block submit %} {% endblock %}
+    </td></tr></table>
+   </form>
+   </div><!-- end of center content -->
+   
+   
+  
+   
+            
+   </div><!-- end of main content -->
+   
+   
+   
+   <div class="footer">
+   
+
+        
+        <br /><br />
+        
+        All Rights Reserved 200
+       
+       
+        </div>
+        
+        <!--<div class="right_footer">
+        <a href="index.html">home</a>
+        <a href="details.html">about</a>
+        <a href="details.html">sitemap</a>
+        <a href="details.html">rss</a>
+        <a href="contact.html">contact us</a>
+        </div> -->  
+   
+   </div>                 
+
+
+</div>
+<!-- end of main_container -->
+</body>
+</html>

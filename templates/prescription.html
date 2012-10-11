@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+	{% block content %} 	{{ form.as_table }} 
+<table border="1.0pt">
+	<tr>
+		<th>Patientname </th>
+		<th>Drugname</th>
+		<th>qty</th>
+		<th>units</th>
+		<th>when</th>
+		<th>dosage</th>
+	</tr>
+	{% for prescription in prescriptiongiven %}
+		<tr>
+		<td> {{prescription.patientname}} </td>
+		<td> {{ prescription.prescription__drugname }}
+		<td> {{ prescription.totalqty }}  </td>					<td> {{ prescription.prescription__units }}  </td>
+					<td> {{ prescription.prescription__when }}  </td>
+		<td> {{ prescription.prescription__dosage }}  </td>
+				</tr>
+	{% endfor %}	
+	</table>
+
+{%endblock %}
+
+{% block submit%} 
+<tr></tr><tr><td> <input type="submit" title="submit" /></td></tr>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,105 @@
+
+{% extends "base.html" %}	
+		
+{% block content %} 
+<h2>Patient Registration</h2>
+
+<table width="100%" ><tr><td>
+<fieldset >
+<legend><h3>Personal Information</h3></legend>
+<table><tr><td width="420px" >
+
+<table ><tr><td width="110px"><label for="id_patientcategoryy">Patient Category</label>  </td><td>{{ patientregistrationform.patientcategory }}
+ <span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.patientcategory.errors  %} 
+ *
+ {% endif %}  </span></td></tr>
+
+<tr><td width="110px"><label for="id_fastnamee">First Name</label> </td><td>{{ patientregistrationform.pre }}
+<span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.pre.errors  %}
+ *
+ {% endif %}  </span>
+&nbsp;&nbsp;{{ patientregistrationform.fastname }} <span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.fastname.errors  %}
+ *
+ {% endif %}  </span>
+</td></tr>
+<tr><td width="110px"><label for="id_middlenamee">Middle Name</label> </td><td>{{ patientregistrationform.middlename }} 
+<span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.middlename.errors  %}
+ *
+ {% endif %}  </span>
+</td></tr>
+<tr><td width="110px"><label for="id_lastnamee">Last Name</label> </td><td>{{ patientregistrationform.lastname }}
+<span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.lastname.errors  %}
+ *
+ {% endif %}  </span>
+
+ </td></tr>
+<tr><td width="110px"><label for="id_parentnamee">Father/Husband<br />/Guardian Name</label> </td><td>{{ patientregistrationform.parentname }}
+<span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.parentname.errors  %}
+ *
+ {% endif %}  </span>
+ </td></tr></table>
+
+
+</td>
+<td width="370px">
+
+<table ><tr><td width="80px"><label for="id_sexe">Sex</label>  </td><td>{{ patientregistrationform.sex }} 
+<span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.sex.errors  %}
+ *
+ {% endif %}  </span>
+  </td></tr>
+<tr><td width="80px"><label for="id_dateofbirthe">Date Of Birth</label> </td><td>{{ patientregistrationform.dateofbirth }}
+
+<span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.dateofbirth.errors  %}
+ *
+ {% endif %}  </span>
+</td></tr>
+<tr><td width="80px"><label for="id_agee">Age</label> </td><td>{{ patientregistrationform.age }}
+<span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.age.errors  %}
+ *
+ {% endif %}  </span> </td></tr>
+<tr><td width="80px"><label for="id_bloode">Blood Group</label> </td><td>{{ patientregistrationform.bloodgroup }} 
+<span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.bloodgroup.errors  %}
+ *
+ {% endif %}  </span>
+</td></tr>
+<tr><td width="80px"><label for="id_bloode">Disease Name</label> </td><td>{{ patientregistrationform.diseasename }} 
+
+</td></tr>
+<tr><td width="80px"><label for="id_bloode">Subcategory</label> </td><td>{{ patientregistrationform.subcategory }} 
+
+</td></tr>
+<tr><td colspan="2">
+</td></tr>
+</table>
+</td></tr></table>
+
+</fieldset>
+</td></tr>
+<tr><td> <fieldset >
+<legend><h3>Contact Information</h3></legend>
+<table><tr><td width="420px">
+<table><tr><td width="110px"><label for="id_addessy">Address</label>  </td><td>{{ patientcontactform.address}}
+<span style="color:#E8172D; font-size:20px;">{% if  patientregistrationform.address.errors  %}
+ *
+ {% endif %}  </span>
+   </td></tr>
+<tr><td width="110px"><label for="id_zipe">Zip</label> </td><td>{{ patientcontactform.zip }} </td></tr>
+<tr><td width="110px"><label for="id_Phone">Phone Number</label> </td><td>{{ patientcontactform.phonenumber }} </td></tr>
+
+</table>
+</td><td width="370px">
+<table ><tr><td width="80px"><label for="id_emaill">Email-ID</label> </td><td>{{ patientcontactform.email}} </td></tr>
+<tr><td width="80px"><label for="id_cityy" >City</label> </td><td>{{ patientcontactform.city}} </td></tr>
+<tr><td width="80px"><label for="id_statee">State</label> </td><td>{{ patientcontactform.state}} </td></tr>
+</table></td></tr></table>
+</fieldset>
+</td></tr></table>
+ 
+
+
+
+{% endblock %}
+
+{% block submit%} 
+<tr><td colspan="3"> <input type="submit"  value="save"  class="button" />&nbsp;&nbsp;&nbsp;<input type="submit"  value="modify" class="button"/>&nbsp;&nbsp;&nbsp;<input type="reset" value="clear" class="button"/></td></tr>{% endblock %}

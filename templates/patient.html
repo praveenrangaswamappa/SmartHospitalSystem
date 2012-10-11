@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script type="text/javascript">
+function  enableEdit()
+{
+
+var chekEdit=document.getElementById("btnEdit").value;
+
+if(chekEdit=="Edit")
+{
+
+document.getElementById("txtCategory").disabled="";
+document.getElementById("txtFirstname").disabled="";
+document.getElementById("txtFirstname").disabled="";
+document.getElementById("txtMiddlename").disabled="";
+document.getElementById("txtLastname").disabled="";
+document.getElementById("txtDateofbirth").disabled="";
+document.getElementById("selBloodgroup").disabled="";
+document.getElementById("txtAddress").disabled="";
+document.getElementById("txtCity").disabled="";
+document.getElementById("txtState").disabled="";
+document.getElementById("txtPhone_no").disabled="";
+document.getElementById("txtEmail_id").disabled="";
+document.getElementById("btnEdit").value="update";
+
+
+
+
+return false;
+
+}
+}
+
+</script>
+
+
+<table width="100%">
+<tr><td width="50px"> {{searchform}}</td><td>
+<label > Enter Patient-ID </label>&nbsp;:&nbsp;&nbsp;<input type="text" name="search" id="search"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" name="submit" value="Search" class="button" />
+
+</td></tr>
+</table>
+
+	<table width="100%">
+<tr>
+<td><table>
+{% for patient in patients %}
+<tr><td><label>patient Id</label></td><td>:</td><td>{{ patient.patientid }}</td></tr>
+<tr><td><label>Category</label></td><td>:</td><td> <input type="text" value="{{ patient.patientcategory}}" id="txtCategory" disabled="disabled" /> </td></tr>
+<tr><td><label>First Name</label></td><td>:</td><td><input type="text" value="{{ patient.pre}}.{{ patient.fastname}}" disabled="disabled" id="txtFirstname"/></td></tr> <tr><td>Middle Name</td><td>:</td><td><input type="text" value="{{ patient.middlename}}" disabled="disabled" id="txtMiddlename"/></td></tr>
+<tr><td>Last Name</td><td>:</td><td><input type="text" value="{{ patient.lastname}}" disabled="disabled" id="txtLastname"/></td></tr>
+<tr><td><label>Sex</label></td><td>:</td><td>{{ patient.sex}}</td></tr>
+<tr><td><label>Date of Birth(age)</label></td><td>:</td><td><input type="text" value="{{ patient.dateofbirth}}({{ patient.age}})" disabled="disabled" id="txtDateofbirth"/></td></tr>
+</table></td>
+<td><table>
+<tr><td><label>Blood Group</label></td><td>:</td><td>
+<select id="selBloodgroup"  disabled="disabled"  >
+<option value="{{ patient.bloodgroup}}" >{{ patient.bloodgroup}}</option>
+<option value="A+" >A+</option>
+<option value="B+" >B+</option>
+<option value="AB+" >AB+</option>
+<option value="O+" >O+</option>
+<option value="A-" >A-</option>
+<option value="AB-" >AB-</option>
+<option value="O-" >O-</option>
+<option value="B-" >B-</option>
+</select>
+</td></tr>
+{% for contacts in contact %}
+{% if contacts.contactid == patient.patientid %}
+<tr><td><label>Address</label></td><td>:</td><td><input type="text" value="{{contacts.address}}" disabled="disabled" id="txtAddress"/> </td></tr>
+<tr><td><label>City </label></td><td>:</td><td><input type="text" value="{{contacts.city}}  " disabled="disabled" id="txtCity" /></td></tr>
+<tr><td><label>State</label></td><td>:</td><td><input type="text" value="{{contacts.state}} " disabled="disabled" id="txtState"/></td></tr>
+<tr><td><label>Phone no</label></td><td>:</td><td><input type="text" value="{{contacts.phonenumber}}" disabled="disabled" id="txtPhone_no"/> </td></tr>
+<tr><td><label>Email Id</label></td><td>:</td><td><input type="text" value="{{contacts.email}}" disabled="disabled" id="txtEmail_id" /> </td></tr>
+</table></td>
+<tr><td  ><input  id="btnEdit" type="submit" name="Edit" value="Edit" class="button"  onclick=" return enableEdit()"/></td><td></td>
+</tr>
+{% endif %}
+{% endfor %}
+{% endfor %}
+</table>
+{{ form.as_p }}
+
+{% endblock %}
+

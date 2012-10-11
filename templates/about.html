@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}	
+
+{% block username %}
+<h5 align="right" text:"white">{% if user.is_active and user.is_staff %}
+Welcome {{ user.username }}		
+		<a href="/logout/">logout</a>
+{% else %}
+		<a href="/login/">login</a>
+
+		{% endif %} </h5>
+
+{% endblock %}
+		
+{% block content %} <H3> About Company</H3>{%endblock %}
+
+
+{% block links %}
+<ul>
+            <li><a href="/patientregistration/">Patient registration</a></li>
+            <li><a href="/patient/">Patients in Hospital</a></li>
+            <li><a href="/invoice/">Invoice</a></li>
+		
+        </ul>
+{% endblock %}

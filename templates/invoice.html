@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+	{% block content %}
+	<table width="100%">
+<tr><td width="50px"> </td><td>
+<label > Enter Patient-ID </label>&nbsp;:&nbsp;&nbsp;<input type="text" name="search" id="search"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" name="submit" value="Genarate Bill" class="button" />
+
+</td></tr>
+</table>
+{% for patient in patients %}
+	 <table>
+<tr><td><fieldset style="width:98%"><legend>Bill Details</legend><table>
+<tr>
+
+<td><label>Patient Id</label></td>
+<td><input type="text" value="{{patient.patientid }}" id="txtpatientid"  disabled="disabled"/></td>
+<td>&nbsp;&nbsp;&nbsp;</td><td><label>Invoice Id</label></td>
+<td><input type="text" value="{{invoiceid}}" id="txtinvoiceid" disabled="disabled" /></td></tr>
+<tr>
+<td><label>Patient Name</label></td>
+<td><input type="text" value="{{patient.pre}}{{patient.fastname}}" id="txtpatientname"  disabled="disabled"/></td>
+<td>&nbsp;&nbsp;&nbsp;</td><td><label>Bill Date</label></td>
+<td><input type="text" value="{{date}}" id="txtbilldate"  disabled="disabled"/></td></tr>
+<tr>
+<td><label>Date Of Joining</label></td>
+<td><input type="text" value="" id="txtdateofjoin" /></td>
+<td>&nbsp;&nbsp;&nbsp;</td><td><label>Tax No</label></td>
+<td><input type="text" value="Tax123" id="txttaxno"/></td>
+</tr>
+<tr>
+<td><label>Date of Discharge</label></td>
+<td><input type="text" value="" id="id_reg_date" /></td>
+<td>&nbsp;&nbsp;&nbsp;</td><td><label>Ambulance</label></td>
+<td><input type="text" value="" id="txtambulance"/></td></tr>
+<tr>
+<td><label>Doctor Fee</label></td>
+<td><input type="text" value="" id="txtdoctorfee" /></td>
+<td>&nbsp;&nbsp;&nbsp;</td><td><label>Miscellaneus</label></td>
+<td><input type="text" value="" id="txtmiscellaneus"/></td></tr>
+<tr>
+<td colspan="2"><label>Pharmacy Charges</label></td>
+<td colspan="2"><label>Bed Charges</label></td>
+</tr>
+<tr>
+
+<td colspan="2"><table>
+{% for result in results %}
+<tr><td width="100px">{{ result.prescription__drugname}}
+</td>
+<td>{{ result.prescription__qty }}
+</td>
+<td>{{ result.price }}
+</td>
+<td>{{ result.totalprice }}
+</td>
+<!--<td>{{ item.prescription__qty }} * {{item.price }}
+</td>-->
+
+</tr>
+
+{% endfor %}
+<tr> <td colspan="3"></td><td> {{totalpharmacycost}} </td></tr>
+</table></td>
+<td colspan="2"><input type="text" value="" /></td>
+</tr>
+<script type="text/javascript">
+function show()
+{
+
+if(document.getElementById("insurance").checked)
+{
+
+document.getElementById("ins").style.display='none';
+
+}
+ if(document.getElementById("insurancee").checked)
+{
+document.getElementById("ins").style.display='block';
+
+}
+}
+	
+</script>
+
+</table></fieldset></td></tr>
+<tr><td><label> Insurance Apply:</label>
+<input type="radio" value="hide" name="insurance" id="insurance"   onclick="show();"/>No
+<input type="radio" value="show" name="insurance" id="insurancee" onclick="show();" />Yes
+
+<div style="display:none" id="ins">
+
+
+<fieldset width="98%"><legend>Insurance Details</legend>
+
+
+<table>
+<tr>
+<td><label>Insurance Policy_No</label></td>
+<td><input type="text" value="" id="txtinsurance" /></td>
+<td>&nbsp;&nbsp;&nbsp;</td><td><label>Policy Provider</label></td>
+<td><input type="text" value="" id="txtpolicy" /></td></tr>
+<tr>
+<td><label>Insurance Processing Fee</label></td>
+<td><input type="text" value="" id="txtprocessing" /></td>
+<td>&nbsp;&nbsp;&nbsp;</td><td><label>Insurance Claims</label></td>
+<td><input type="text" value="" id="txtclaims" /></td></tr>
+</table>
+
+</fieldset>
+</div>
+</td></tr>
+
+</table><tr><td> <input type="submit" title="submit" /></td></tr>	{% endfor %}{%endblock %}
+{% block submit%} 
+{% endblock %}
+
+

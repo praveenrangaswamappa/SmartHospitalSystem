@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table border="1.0pt">
+	<tr>
+		<th >Patient name</th>
+		<th>Drugname</th>
+		<th>qty</th>
+		<th>units</th>
+		<th>dosage</th>
+	</tr>
+	{% for prescription in prescriptiongiven %}
+		<tr>
+		<td> {{ prescription.patientid }} </td>
+		<td> {{ prescription.drugname }} </td>
+		<td> {{ prescription.qty }}  </td>					<td> {{ prescription.units }}  </td>
+		<td> {{ prescription.dosage }}  </td>
+				</tr>
+	{% endfor %}	
+	</table>
+
+{% endblock %}
+
